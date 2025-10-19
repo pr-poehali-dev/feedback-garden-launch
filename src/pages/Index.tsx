@@ -276,8 +276,8 @@ const Index = () => {
                   <span className="text-gray-600">Всего отзывов</span>
                   <Icon name="MessageSquare" size={20} className="text-emerald-600" />
                 </div>
-                <p className="text-3xl font-bold text-gray-900">1,247</p>
-                <p className="text-sm text-emerald-600 mt-1">+18% за месяц</p>
+                <p className="text-3xl font-bold text-gray-900">0</p>
+                <p className="text-sm text-gray-400 mt-1">Статистика обновится после первых отзывов</p>
               </Card>
 
               <Card className="p-6">
@@ -285,8 +285,8 @@ const Index = () => {
                   <span className="text-gray-600">Средний рейтинг</span>
                   <Icon name="Star" size={20} className="text-amber-500" />
                 </div>
-                <p className="text-3xl font-bold text-gray-900">4.8</p>
-                <p className="text-sm text-emerald-600 mt-1">+0.3 за месяц</p>
+                <p className="text-3xl font-bold text-gray-900">—</p>
+                <p className="text-sm text-gray-400 mt-1">Ожидаем первые отзывы</p>
               </Card>
 
               <Card className="p-6">
@@ -294,32 +294,17 @@ const Index = () => {
                   <span className="text-gray-600">Активных садов</span>
                   <Icon name="Users" size={20} className="text-emerald-600" />
                 </div>
-                <p className="text-3xl font-bold text-gray-900">432</p>
-                <p className="text-sm text-emerald-600 mt-1">+25% за месяц</p>
+                <p className="text-3xl font-bold text-gray-900">0</p>
+                <p className="text-sm text-gray-400 mt-1">Первые пользователи появятся скоро</p>
               </Card>
             </div>
 
             <Card className="p-6 mb-8">
               <h3 className="text-lg font-semibold mb-4">Последние отзывы</h3>
-              <div className="space-y-4">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="border-b pb-4 last:border-0">
-                    <div className="flex items-start justify-between mb-2">
-                      <div>
-                        <p className="font-medium">Анонимный пользователь</p>
-                        <p className="text-sm text-gray-600">2 часа назад</p>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, idx) => (
-                          <Icon key={idx} name="Star" size={14} className="text-amber-500 fill-amber-500" />
-                        ))}
-                      </div>
-                    </div>
-                    <p className="text-gray-700 text-sm">
-                      Отличный товар, полностью соответствует описанию. Доставка быстрая, упаковка качественная. Рекомендую к покупке!
-                    </p>
-                  </div>
-                ))}
+              <div className="flex flex-col items-center justify-center py-12 text-center">
+                <Icon name="MessageSquare" size={48} className="text-gray-300 mb-4" />
+                <p className="text-gray-600 font-medium mb-2">Пока нет отзывов</p>
+                <p className="text-sm text-gray-500">Здесь будут отображаться отзывы ваших клиентов</p>
               </div>
             </Card>
 
