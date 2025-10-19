@@ -11,6 +11,8 @@ const Index = () => {
   const [activeTab, setActiveTab] = useState('home');
   const [reviewText, setReviewText] = useState('');
   const [reviewCount, setReviewCount] = useState(7);
+  const [totalReviews, setTotalReviews] = useState(7);
+  const [discountsEarned, setDiscountsEarned] = useState(0);
   const { toast } = useToast();
 
   const handleSubmitReview = () => {
@@ -23,16 +25,37 @@ const Index = () => {
       return;
     }
 
-    setReviewCount(prev => prev + 1);
+    const newCount = reviewCount + 1;
+    setReviewCount(newCount);
+    setTotalReviews(prev => prev + 1);
     setReviewText('');
-    toast({
-      title: 'Отзыв опубликован! 🎉',
-      description: 'Ваше дерево подросло. Спасибо за обратную связь!',
-    });
+    
+    if (newCount >= 30) {
+      setDiscountsEarned(prev => prev + 1);
+      setReviewCount(0);
+      toast({
+        title: 'Поздравляем! 🎉',
+        description: 'Вы получили скидку 300₽! Дерево начинает расти заново.',
+      });
+    } else {
+      toast({
+        title: 'Отзыв опубликован! 🎉',
+        description: 'Ваше дерево подросло. Спасибо за обратную связь!',
+      });
+    }
     setActiveTab('garden');
   };
 
-  const treeProgress = (reviewCount / 30) * 100;
+  const handleClaimDiscount = () => {
+    setDiscountsEarned(prev => prev + 1);
+    setReviewCount(0);
+    toast({
+      title: 'Скидка получена! 🎁',
+      description: 'Промокод отправлен на вашу почту. Дерево начинает расти заново!',
+    });
+  };
+
+  const currentCycleProgress = (reviewCount / 30) * 100;
   const treeStage = reviewCount < 10 ? 'sprout' : reviewCount < 20 ? 'small' : reviewCount < 30 ? 'medium' : 'full';
 
   return (
@@ -174,13 +197,14 @@ const Index = () => {
             <Card className="p-8">
               <div className="text-center mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">Ваш сад</h2>
-                <p className="text-gray-600">Отзывов: {reviewCount} из 30</p>
+                <p className="text-gray-600">Текущий цикл: {reviewCount} из 30</p>
+                <p className="text-sm text-gray-500 mt-1">Всего отзывов: {totalReviews} | Скидок получено: {discountsEarned}</p>
               </div>
 
               <div className="mb-8">
-                <Progress value={treeProgress} className="h-3" />
+                <Progress value={currentCycleProgress} className="h-3" />
                 <p className="text-center text-sm text-gray-600 mt-2">
-                  {30 - reviewCount} отзывов до скидки 300₽
+                  {30 - reviewCount} отзывов до следующей скидки 300₽
                 </p>
               </div>
 
@@ -220,9 +244,19 @@ const Index = () => {
                   <Icon name="Gift" size={32} className="mx-auto mb-2" />
                   <h3 className="text-xl font-bold mb-2">Поздравляем! 🎉</h3>
                   <p className="mb-4">Вы получили скидку 300₽</p>
-                  <Button variant="secondary" size="lg">
+                  <Button variant="secondary" size="lg" onClick={handleClaimDiscount}>
                     Получить промокод
                   </Button>
+                  <p className="text-xs text-amber-100 mt-3">После получения скидки дерево начнёт расти заново</p>
+                </div>
+              )}
+              
+              {discountsEarned > 0 && reviewCount < 30 && (
+                <div className="mt-6 bg-emerald-50 rounded-lg p-4 text-center">
+                  <Icon name="Award" size={24} className="mx-auto mb-2 text-emerald-600" />
+                  <p className="text-sm text-gray-700">
+                    Вы уже получили <span className="font-bold text-emerald-600">{discountsEarned}</span> {discountsEarned === 1 ? 'скидку' : 'скидки'}! Продолжайте оставлять отзывы.
+                  </p>
                 </div>
               )}
             </Card>
