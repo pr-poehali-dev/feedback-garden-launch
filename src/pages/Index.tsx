@@ -10,8 +10,8 @@ import { useToast } from '@/hooks/use-toast';
 const Index = () => {
   const [activeTab, setActiveTab] = useState('home');
   const [reviewText, setReviewText] = useState('');
-  const [reviewCount, setReviewCount] = useState(7);
-  const [totalReviews, setTotalReviews] = useState(7);
+  const [reviewCount, setReviewCount] = useState(0);
+  const [totalReviews, setTotalReviews] = useState(0);
   const [discountsEarned, setDiscountsEarned] = useState(0);
   const { toast } = useToast();
 
