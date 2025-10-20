@@ -350,18 +350,18 @@ const Index = () => {
             <div className="grid md:grid-cols-3 gap-6">
               <Card className="p-6 hover:shadow-xl transition-shadow">
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold mb-2">Старт</h3>
+                  <h3 className="text-xl font-bold mb-2">Базовый</h3>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-bold">5,000₽</span>
+                    <span className="text-4xl font-bold">990₽</span>
                     <span className="text-gray-600">/мес</span>
                   </div>
                 </div>
                 <ul className="space-y-3 mb-6">
                   {[
-                    'До 100 отзывов/мес',
-                    '10 QR-кодов',
-                    'Базовая аналитика',
-                    'Email поддержка',
+                    'Без печатных QR-кодов',
+                    'Отзывы на 1 филиал/10 товаров',
+                    'Без рекламы на сайте',
+                    'Онлайн QR-коды включены',
                   ].map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-2">
                       <Icon name="Check" size={18} className="text-emerald-600" />
@@ -377,19 +377,18 @@ const Index = () => {
                   Популярный
                 </div>
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold mb-2">Рост</h3>
+                  <h3 className="text-xl font-bold mb-2">Профи</h3>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-bold">12,000₽</span>
+                    <span className="text-4xl font-bold">2,990₽</span>
                     <span className="text-gray-600">/мес</span>
                   </div>
                 </div>
                 <ul className="space-y-3 mb-6">
                   {[
-                    'До 500 отзывов/мес',
-                    '50 QR-кодов',
-                    'Расширенная аналитика',
-                    'Приоритетная поддержка',
-                    'Кастомизация',
+                    'До 50 печатных QR-кодов',
+                    'Отзывы на 3 филиала/50 товаров',
+                    'Реклама 6 часов в сутки',
+                    'Онлайн QR-коды включены',
                   ].map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-2">
                       <Icon name="Check" size={18} className="text-emerald-600" />
@@ -402,20 +401,19 @@ const Index = () => {
 
               <Card className="p-6 hover:shadow-xl transition-shadow">
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold mb-2">Бизнес</h3>
+                  <h3 className="text-xl font-bold mb-2">Премиум</h3>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-bold">25,000₽</span>
+                    <span className="text-4xl font-bold">5,990₽</span>
                     <span className="text-gray-600">/мес</span>
                   </div>
                 </div>
                 <ul className="space-y-3 mb-6">
                   {[
-                    'Безлимит отзывов',
-                    'Безлимит QR-кодов',
-                    'Полная аналитика',
-                    '24/7 поддержка',
-                    'API доступ',
-                    'Персональный менеджер',
+                    'До 200 печатных QR-кодов',
+                    'Отзывы на 10 филиалов/200 товаров',
+                    'Реклама 24/7 на сайте',
+                    'Личная поддержка',
+                    'Онлайн QR-коды включены',
                   ].map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-2">
                       <Icon name="Check" size={18} className="text-emerald-600" />
